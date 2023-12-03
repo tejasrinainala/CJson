@@ -1,8 +1,9 @@
 #include <stdio.h>
 
 int main() {
-    // Generate a simple JSON string
-    const char* jsonString = "{"
+    // Generating a simple JSON string
+    const char* jsonString = 
+{
         "\"physicalID\":\"RCB1000997\","
         "\"startTime\":104286053,"
         "\"dockID\":\"test_test-Dock1\","
@@ -25,7 +26,7 @@ int main() {
         "\"currDist\":304124995654,"
         "\"peakFreq\":207,"
         "\"ucSpikes\":67"
-    "}";
+    };
 
     // Print the JSON string
     printf("%s\n", jsonString);
