@@ -1,0 +1,58 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "frozen.h"
+#include "cJSON.h"
+
+int main() {
+    // Create a JSON object
+    cJSON *root = cJSON_CreateObject();
+    if (!root) {
+        fprintf(stderr, "Failed to create JSON object\n");
+        return 1;
+    }
+
+    // Add key-value pairs to the JSON object
+    cJSON_AddStringToObject(root, "physicalID", "RCB1000997");
+    cJSON_AddNumberToObject(root, "startTime", 104286053);
+    cJSON_AddStringToObject(root, "dockID", "test_test-Dock1");
+
+    // Add arrays to the JSON object
+    cJSON_AddItemToObject(root, "deltaTime", cJSON_CreateIntArray((const int[]){1, 3, 16, 50, 80}, 5));
+    cJSON_AddItemToObject(root, "voltage", cJSON_CreateIntArray((const int[]){200, 200, 200, 200, 200}, 5));
+    cJSON_AddItemToObject(root, "SoC", cJSON_CreateIntArray((const int[]){46, 46, 46, 46, 46}, 5));
+    cJSON_AddItemToObject(root, "avlEnergy", cJSON_CreateIntArray((const int[]){2981, 2981, 2981, 2981, 2981}, 5));
+
+    cJSON_AddNumberToObject(root, "voltageMax", 220);
+    cJSON_AddNumberToObject(root, "voltageMean", 220);
+    cJSON_AddNumberToObject(root, "SoCMax", 38);
+    cJSON_AddNumberToObject(root, "SoCMean", 38);
+    cJSON_AddNumberToObject(root, "avlEnergyMax", 3110);
+    cJSON_AddNumberToObject(root, "avlEnergyMean", 2846);
+    cJSON_AddNumberToObject(root, "tempMax", 25);
+    cJSON_AddNumberToObject(root, "tempMean", 25);
+
+    cJSON_AddBoolToObject(root, "currentSign", true);
+    cJSON_AddNumberToObject(root, "currMax", 70);
+    cJSON_AddNumberToObject(root, "timeToMax", 53059);
+    cJSON_AddNumberToObject(root, "currMean", 39);
+    cJSON_AddNumberToObject(root, "currDist", 304124995654);
+    cJSON_AddNumberToObject(root, "peakFreq", 207);
+    cJSON_AddNumberToObject(root, "ucSpikes", 67);
+
+    // Convert the JSON object to a JSON-formatted string
+    char *jsonString = cJSON_Print(root);
+    if (!jsonString) {
+        fprintf(stderr, "Failed to convert JSON object to string\n");
+        cJSON_Delete(root);
+        return 1;
+    }
+
+    // Print the JSON string
+    printf("%s\n", jsonString);
+
+    // Clean up memory
+    cJSON_Delete(root);
+    free(jsonString);
+
+    return 0;
+}
