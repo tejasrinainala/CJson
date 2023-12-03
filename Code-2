@@ -1,0 +1,34 @@
+#include <stdio.h>
+
+int main() {
+    // Generate a simple JSON string
+    const char* jsonString = "{"
+        "\"physicalID\":\"RCB1000997\","
+        "\"startTime\":104286053,"
+        "\"dockID\":\"test_test-Dock1\","
+        "\"deltaTime\":[1,3,16,50,80],"
+        "\"voltage\":[200,200,200,200,200],"
+        "\"SoC\":[46,46,46,46,46],"
+        "\"avlEnergy\":[2981,2981,2981,2981,2981],"
+        "\"voltageMax\":220,"
+        "\"voltageMean\":220,"
+        "\"SoCMax\":38,"
+        "\"SoCMean\":38,"
+        "\"avlEnergyMax\":3110,"
+        "\"avlEnergyMean\":2846,"
+        "\"tempMax\":25,"
+        "\"tempMean\":25,"
+        "\"currentSign\":true,"
+        "\"currMax\":70,"
+        "\"timeToMax\":53059,"
+        "\"currMean\":39,"
+        "\"currDist\":304124995654,"
+        "\"peakFreq\":207,"
+        "\"ucSpikes\":67"
+    "}";
+
+    // Print the JSON string
+    printf("%s\n", jsonString);
+
+    return 0;
+}
